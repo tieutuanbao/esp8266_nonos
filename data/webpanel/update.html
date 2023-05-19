@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solantech: ESP Firework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="logo">
+        <img src="logo.png" alt="solantech logo">
+    </div>
+    <div class="full-form">
+        <div class="form">
+            <div class="about">
+                <h2>Thông tin chung</h2>
+                <div>- Hãng sản xuất: Solantech</div>
+                <div>- Wifi: SOLANTECH: FIREWORK ESP</div>
+                <div>- Mật khẩu mặc định: Không có</div>
+                <div>- Địa chỉ mặc định: 8.8.8.8</div>
+                <h2>Hướng dẫn đấu nối</h2>
+                <a href="" style="display: block; width: 100%; margin: 10px 0px 10px 0px;"><button style="width: 100%; background-color: rgb(186, 125, 255); color: white; line-height: 30px; border: 1px black solid; border-radius: 10px">Link Facebook</button></a>
+                <a href="" style="display: block; width: 100%; margin: 10px 0px 10px 0px;"><button style="width: 100%; background-color: rgb(186, 125, 255); color: white; line-height: 30px; border: 1px black solid; border-radius: 10px">Link Youtube</button></a>
+                <a href="" style="display: block; width: 100%; margin: 10px 0px 10px 0px;"><button style="width: 100%; background-color: rgb(186, 125, 255); color: white; line-height: 30px; border: 1px black solid; border-radius: 10px">Link Solantech</button></a>
+                <h2>Thông tin phần cứng</h2>
+                <div>- Wifi: 2.4Ghz</div>
+                <div>- Âm thanh: Mono 44100Hz</div>
+                <h2>Cập nhật Firmware</h2>
+                <div style="color: red;">* Chức năng cập nhật Firmware được dùng chỉ khi mạch đã kết nối đến Wifi</div>
+                <div>- Truy cập Website của Solantech để tải file Firmware</div>
+                <div style="display: flex; height: 40px;"><a href="" style="margin: auto;"><button style="background-color: rgb(186, 125, 255); color: white; line-height: 30px; border: 1px black solid; border-radius: 10px">Ấn vào để truy cập</button></a></div>
+            </div>
+            <div style="height: 10px">
+            </div>
+            <input id="filename" type="text" style="width: 90%; margin-bottom: 10px; height: 30px;" placeholder="Firmware file *.bin" readonly>
+            <input type="file" name="fileopen" id="fileopen" style="display: none;" onChange="fileChange();">
+            <progress id="upload-proc" value="0" max="100" style="width: 80%; margin-bottom: 10px;"></progress>
+            <div style="width:90%; display: flex; justify-content: space-between;">
+                <div style="line-height: 25px; width: 30%; max-width: 200px; text-align: center; background-color: rgb(239, 239, 239); border: 1px rgb(118, 118, 118) solid; border-radius: 3px;">
+                    <label for="fileopen" style="display: inline-block; margin: auto; ">Mở file</label>
+                </div>
+                <div style="line-height: 25px; width: 30%; max-width: 200px; text-align: center; background-color: rgb(239, 239, 239); border: 1px rgb(118, 118, 118) solid; border-radius: 3px;">
+                    <label for="update" style="display: inline-block; margin: auto; ">Update</label>
+                </div>
+                <input id="update" style="display: none;" type="button" value="Update" onclick="return upload()" disabled>
+            </div>
+            <label id="fversion" for="upload-proc" style="color: red; font-weight: bold; font-size: 14px; margin-top: 5px; margin-bottom: 5px;"></label>
+            <label id="hversion" for="upload-proc" style="color: red; font-weight: bold; font-size: 14px; margin-top: 5px; margin-bottom: 5px;"></label>
+            <label id="alert" for="upload-proc" style="color: red; font-weight: bold; font-size: 14px; margin-top: 5px; margin-bottom: 5px;"></label>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="/" style="color: black;"><img src = "power.svg"/><span>Điều khiển</span></a>
+        <a href="/setup" style="color: black;"><img src = "setup.svg"/><span>Cài đặt</span></a>
+        <a href="/alarm" style="color: black;"><img src = "alarm.svg"/><span>Hẹn giờ</span></a>
+        <a href="/wifi" style="color: black;"><img src = "wifi.svg"/><span>Wifi</span></a>
+        <a href="/info" style="background-color: rgb(206 183 255); color: white;"><img src = "info.svg"/><span>Hướng dẫn</span></a>
+    </div>
+<script src="firework_bg.js" defer></script>
+<script defer>
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api?id=ud_stt", true);
+    xhttp.send();
+    var IP = "";
+    function fileChange() {
+        document.getElementById("filename").value = document.getElementById('fileopen').files[0].name;
+    }
+    function upload() {
+        var ws = new WebSocket("ws://" + IP + "/fw_stream");
+        var file = document.getElementById('fileopen').files[0];
+        var AddrFile = 0x00082000;
+        // var chunkForm = new FormData();
+        // var chunkStart = 0;
+        const chunkSize = 2048;
+        document.getElementById("upload-proc").max = file.size;
+
+        /* --- Websocket callback --- */
+        ws.onopen = function() {
+            arr = new Uint8Array([
+                0x7E,
+                (AddrFile & 0xff000000) >> 24,
+                (AddrFile & 0x00ff0000) >> 16,
+                (AddrFile & 0x0000ff00) >> 8,
+                (AddrFile & 0x000000ff),
+                (file.size & 0xff000000) >> 24,
+                (file.size & 0x00ff0000) >> 16,
+                (file.size & 0x0000ff00) >> 8,
+                (file.size & 0x000000ff)
+            ]);
+            ws.send(arr.buffer);
+        };
+        ws.onmessage = function(evt) {
+            var received_msg = evt.data;
+            if(received_msg == "START_UPLOAD") {
+                var sizeSent = 0;
+                var slice = 0;
+                document.getElementById("update").disabled = true;
+                var reader = new FileReader();
+                var rawData = new ArrayBuffer();
+                reader.onloadend = function() {
+                }
+                reader.onload = function(e) {
+                    rawData = e.target.result;
+                    ws.onmessage = function(evt) {
+                        received_msg = evt.data;
+                        if(received_msg == "STOP_UPLOAD") {
+                            document.getElementById("update").disabled = false;
+                            document.getElementById("alert").innerHTML = "Update thành công! mạch đang khởi động lại."
+                        }
+                        else {
+                            const obj = JSON.parse(received_msg);
+                            if(obj.hasOwnProperty('proc')) {
+                                document.getElementById("upload-proc").value = obj.proc;
+                                if(obj.proc === (sizeSent + rawData.byteLength)) {
+                                    sizeSent += rawData.byteLength;
+                                    seek();
+                                }
+                            }
+                        }
+                    }
+                    ws.send(rawData);
+                }
+                reader.onprogress = function(e) {
+                }
+                function seek() {
+                    if(file.size > sizeSent) {
+                        if((file.size - sizeSent) >= chunkSize) {
+                            slice = file.slice(sizeSent, sizeSent + chunkSize);
+                        }
+                        else {
+                            slice = file.slice(sizeSent, sizeSent + (file.size - sizeSent));                        
+                        }
+                        reader.readAsArrayBuffer(slice);
+                    }
+                }
+                slice = file.slice(0, chunkSize);
+                reader.readAsArrayBuffer(slice);
+            }
+        };    
+        ws.onclose = function() {
+            console.log("Connection is closed..."); 
+        };
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            try {
+                /* Lấy dữ liệu Json */
+                const obj = JSON.parse(this.responseText);
+                if(obj.hasOwnProperty('ip')) {
+                    /* Lấy IP */
+                    if(obj.ip != "") {
+                        document.getElementById("update").disabled = false;
+                        IP = obj.ip;
+                    }
+                    else {
+                        document.getElementById("update").disabled = true;
+                        IP = "";
+                    }
+                }
+                if(obj.hasOwnProperty('fvers')) {
+                    document.getElementById("fversion").innerHTML = "FW version: " + obj.fvers;
+                }
+                if(obj.hasOwnProperty('hvers')) {
+                    document.getElementById("hversion").innerHTML = "HW version: " + obj.hvers;
+                }
+            }
+            catch (e) {
+                return false;
+            }
+        }
+    };
+
+</script>
+</body>
+</html>

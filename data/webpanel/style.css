@@ -1,0 +1,192 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 0;
+    position: relative;
+    background-color: black;
+}
+#canvas{
+    height: 50%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+}
+.logo {
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    opacity: 0.2;
+}
+.logo > img {
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 800px;
+    height: 100%;
+    width: 80%;
+}
+.full-form {
+    z-index: 10;
+    display: flex;
+    justify-items: center;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 200px;
+    height: auto;
+    width: 100%;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+}
+.full-form > .full-title {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: crimson;
+}
+.full-form > .full-title > .title{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.full-form > .full-title > .sub {
+    display: block;
+}
+.form {
+    display: flex;
+    justify-items: center;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 600px;
+    padding-left: 10px;
+    padding-right: 10px;;
+}
+.form #param{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.form #param > label{
+    display: inline-block;
+    margin: auto;
+    margin-left: 0;
+    width: auto;
+}
+.form #param > select {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 35%;
+    right: 0;
+    height: 30px;
+    border: 0px solid black;
+    border-radius: 3px;
+    background-color: rgb(206 183 255);
+    text-align: left;
+}
+.form #param > input {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 35%;
+    right: 0;
+    height: 30px;
+    border: 0px solid black;
+    border-radius: 3px;
+    background-color: rgb(206 183 255);
+    text-align: left;
+}
+.form > .button {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.form > .button input{
+    width: 30%;
+    background-color: #d068ff;
+    color: white;
+    border-radius: 10px;
+    font-weight: bolder;
+    height: 40px;
+}
+.form > .button > a{
+    width: 30%;
+}
+.form > .button > a > input {
+    width: 100%;
+}
+.wifi-info {
+    margin-top: 50px;
+    width: 90%;
+    background-color: white;
+}
+.wifi-info > div > *{
+    display: inline-block;
+}
+.wifi-info > div > #label{
+    width: 100px;
+    font-size: 18px;
+}
+.menu {
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    max-width: 1000px;
+    display: flex;    
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    border-top: 1px black solid;
+    background-color: white;
+    color: white;
+}
+.menu > a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-right: 0px black solid;
+    text-decoration: none;
+    font-weight: bold;
+}
+.menu > a img {
+    height: 40%;
+    margin: 0px;
+    padding-top: 5px;
+}
+.menu > a span{
+    display: block;
+    line-height: 20px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+}

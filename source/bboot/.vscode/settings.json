@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "bboot.h": "c",
+        "loader.h": "c",
+        "stdint.h": "c"
+    }
+}

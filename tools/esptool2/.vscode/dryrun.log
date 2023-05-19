@@ -1,0 +1,9 @@
+make: Entering directory '/c/Users/Admin/Downloads/esptool2'
+echo "CC esptool2.c"
+gcc -O2 -Wall -c esptool2.c -o esptool2.o
+echo "CC esptool2_elf.c"
+gcc -O2 -Wall -c esptool2_elf.c -o esptool2_elf.o
+echo "LD esptool2"
+gcc -o esptool2 esptool2.o esptool2_elf.o
+make: Leaving directory '/c/Users/Admin/Downloads/esptool2'
+ 

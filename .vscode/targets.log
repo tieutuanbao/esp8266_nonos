@@ -1,0 +1,680 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-msys
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat Aug 27 09:05:28 2022
+
+# Variables
+
+# environment
+SYSTEMDRIVE = C:
+# makefile (from 'Makefile', line 40)
+FLASH_BAUD := 921600
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 20)
+AR := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-ar
+# environment
+USERPROFILE = C:\Users\Admin
+# environment
+IDF_PATH = C:\msys32\home\Admin\esp\ESP8266_RTOS_SDK
+# environment
+LOCALAPPDATA = C:\Users\Admin\AppData\Local
+# environment
+VSCODE_CWD = C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# makefile (from 'Makefile', line 120)
+DATETIME := 2022-Aug-27_09:05:28_SEAST
+# default
+MAKE_COMMAND := make
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_6916_VRNWTDTHUIDEGRAK
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\Admin\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+TMP = /c/Users/Admin/AppData/Local/Temp
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile (from 'Makefile', line 138)
+LD_SCRIPT = ./ld/default_32MB.ld
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 142)
+SDK_LIBS := -LESP8266_NONOS_SDK/lib -nostdlib -T./ld/default_32MB.ld -Wl,--no-check-sections -Wl,--gc-sections -u call_user_start -Wl,-static -Wl,--start-group -lc -lgcc -lhal -lphy -lpp -lnet80211 -llwip -lmbedtls -lwpa -lcrypto -lmain -ljson -lssl -lupgrade -lsmartconfig -lairkiss -ldriver
+# environment
+ONEDRIVE = C:\Users\Admin\OneDrive
+# makefile
+CURDIR := /f/1.projects/1.phao_hoa_esp8266/220415/nonos/esp8266_project
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from 'Makefile', line 75)
+SRCS := ./source/rf_init.c ./source/main.c ./mcu_xlibs/misc/bits_string.c ./mcu_xlibs/misc/bits_math.c ./mcu_xlibs/misc/color.c ./mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_gpio.c ./mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_iomux.c ./mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_i2s.c ./mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_slc.c ./mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_spi.c ./mcu_xlibs/arch/tensilica/l106/esp8266/libs/i2s_dma/i2s_dma.c ./mcu_xlibs/arch/tensilica/l106/esp8266/libs/dns_server/dns_server.c ./source/libs/src/i2s.c ./source/http_parser/http_parser.c ./source/http_server/http_server.c ./source/ucs1903/ucs1903.c ./source/strip_led/meteor.c ./source/firework/firework.c ./mcu_xlibs/components/audio/audio_generator_wav.c ./mcu_xlibs/components/audio/audio_output_i2s_noDAC.c ./source/spiffs/fs.c ./source/spiffs/spiffs/src/spiffs_cache.c ./source/spiffs/spiffs/src/spiffs_check.c ./source/spiffs/spiffs/src/spiffs_gc.c ./source/spiffs/spiffs/src/spiffs_hydrogen.c ./source/spiffs/spiffs/src/spiffs_nucleus.c ./source/ezform/ezform.c ./source/rboot/rboot.c ./source/rboot/appcode/rboot-api.c ./source/rboot/appcode/rboot-bigflash.c
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+PROGRAMFILES = C:\Program Files
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from 'Makefile', line 31)
+FS_PAGE_SZ = 256
+# makefile (from 'Makefile', line 17)
+XTENSA_DIR = C:/msys32/opt/xtensa-lx106-elf/bin/
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 6916
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 13)
+MONITORTOOL = tools/idf_monitor.py
+# makefile (from 'Makefile', line 30)
+FS_BLOCK_SZ = 8192
+# makefile (from 'Makefile', line 122)
+CCFLAGS := -Os -g -Wpointer-arith -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals -ffunction-sections -fdata-sections -fno-builtin-printf -DICACHE_FLASH -DBUID_TIME=\"2022-Aug-27_09:05:28_SEAST\"
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 43)
+FLASHDEF := --flash_freq 80m --flash_mode qio --flash_size 4MB --compress
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+ONEDRIVECONSUMER = C:\Users\Admin\OneDrive
+# default
+MAKE_HOST := x86_64-pc-msys
+# makefile (from 'Makefile', line 119)
+OBJS := build/obj/rf_init.o build/obj/main.o build/obj/bits_string.o build/obj/bits_math.o build/obj/color.o build/obj/esp8266_gpio.o build/obj/esp8266_iomux.o build/obj/esp8266_i2s.o build/obj/esp8266_slc.o build/obj/esp8266_spi.o build/obj/i2s_dma.o build/obj/dns_server.o build/obj/i2s.o build/obj/http_parser.o build/obj/http_server.o build/obj/ucs1903.o build/obj/meteor.o build/obj/firework.o build/obj/audio_generator_wav.o build/obj/audio_output_i2s_noDAC.o build/obj/fs.o build/obj/spiffs_cache.o build/obj/spiffs_check.o build/obj/spiffs_gc.o build/obj/spiffs_hydrogen.o build/obj/spiffs_nucleus.o build/obj/ezform.o build/obj/rboot.o build/obj/rboot-api.o build/obj/rboot-bigflash.o
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := /bin/sh
+# environment
+HOMEPATH = \Users\Admin
+# environment
+PLATFORMIO_CALLER = vscode
+# default
+MAKECMDGOALS := all
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# makefile (from 'Makefile', line 15)
+BUILDFSTOOL = tools/tool-mkspiffs/mkspiffs.exe
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+WINDIR = C:\WINDOWS
+# makefile (from 'Makefile', line 11)
+SDK_BASE = ESP8266_NONOS_SDK/
+ 
+# makefile (from 'Makefile', line 27)
+FS_END = 0x3FA000
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile', line 22)
+OBJDUMP := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-objdump
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /c/Python27:/c/Python27/Scripts:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/c/Program Files (x86)/php:/c/composer:/c/Program Files/dotnet:/c/Program Files/Git/cmd:/c/Users/Admin/AppData/Local/Microsoft/WindowsApps:/c/Program Files (x86)/Nmap:/c/WINDOWS/system32:/c/Program Files/SDCC/bin:/c/Program Files/CMake/bin:/c/Users/Admin/AppData/Roaming/Composer/vendor/bin:/c/msys32/opt/xtensa-lx106-elf/bin:/usr/bin:/c/Users/Admin/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/Admin/.dotnet/tools
+# environment
+ZES_ENABLE_SYSMAN = 1
+# environment
+COMPUTERNAME = DESKTOP-OL0EKIL
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+PROMPT = $P$G
+# makefile (from 'Makefile', line 117)
+OUT_DIR := build/out/
+# makefile (from 'Makefile', line 14)
+GENAPPTOOL = tools/gen_appbin.py
+# environment
+LOGONSERVER = \\DESKTOP-OL0EKIL
+# environment
+USERNAME = Admin
+# environment
+COMMONPROGRAMFILES = C:\Program Files\Common Files
+# makefile (from 'Makefile', line 112)
+DEFINE := ICACHE_FLASH __ets__ F_CPU=160000000 SPI_FLASH_SIZE_MAP=4 MEM_DEFAULT_USE_DRAM LWIP_OPEN_SRC MEM_LIBC_MALLOC=0 SPIFFS_LOG_PAGE_SIZE=256 SPIFFS_LOG_BLOCK_SIZE=8192 SPIFFS_BASE_ADDR=0x300000 SPIFFS_SIZE=1024000
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 99)
+INC := ESP8266_NONOS_SDK/include ESP8266_NONOS_SDK/driver_lib/include/driver ESP8266_NONOS_SDK/third_party/include ESP8266_NONOS_SDK/third_party/include/lwip ./source ./mcu_xlibs/misc ./mcu_xlibs/arch/tensilica/l106/esp8266/include/driver ./mcu_xlibs/arch/tensilica/l106/esp8266/libs/dns_server ./mcu_xlibs/arch/tensilica/l106/esp8266/libs/i2s_dma ./source/libs/inc ./mcu_xlibs/misc ./source/http_parser ./source/http_server ./source/ucs1903 ./source/strip_led ./source/firework ./mcu_xlibs/components/audio ./source/spiffs ./source/spiffs/spiffs/src ./source/ezform ./source/rboot ./source/rboot/appcode ./source/rboot/build
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+NO_PROXY = 127.0.0.1
+# makefile (from 'Makefile', line 12)
+ESPTOOL = tools/esptool/esptool.py
+# makefile (from 'Makefile', line 26)
+FS_SOURCE = ./data
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = DESKTOP-OL0EKIL
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+OS = Windows_NT
+# environment
+PLATFORMIO_PATH = C:\Users\Admin\.platformio\python3;C:\Python27\;C:\Python27\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\php;C:\composer;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Nmap;C:\WINDOWS\system32\;C:\Program Files\SDCC\bin;C:\Program Files\CMake\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\msys32\opt\xtensa-lx106-elf\bin;C:\msys64\usr\bin;C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Admin\.dotnet\tools;C:\Python27\;C:\Python27\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\php;C:\composer;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Nmap;C:\WINDOWS\system32\;C:\Program Files\SDCC\bin;C:\Program Files\CMake\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\msys32\opt\xtensa-lx106-elf\bin;C:\msys64\usr\bin;C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Admin\.dotnet\tools
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 34)
+FLASH_PORT := COM4
+# default
+MAKE_VERSION := 4.3
+# 'override' directive
+.SHELLSTATUS := 0
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# makefile (from 'Makefile', line 139)
+LDFLAGS = -Wl,--no-check-sections -Wl,--gc-sections -u call_user_start -Wl,-static
+# environment
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-OL0EKIL
+# environment
+NUMBER_OF_PROCESSORS = 12
+# environment
+PUBLIC = C:\Users\Public
+# environment
+!F: = f:\1.projects\1.phao_hoa_esp8266\220415\nonos\esp8266_project
+# environment
+ASL.LOG = Destination=file
+# makefile (from 'Makefile', line 115)
+OBJS_DIR := build/obj/
+# environment
+APPDATA = C:\Users\Admin\AppData\Roaming
+# environment
+HOMEDRIVE = C:
+# environment
+PROCESSOR_ARCHITECTURE = AMD64
+# makefile (from 'Makefile', line 7)
+APP_BOOT_ADDR := 0x02000
+# makefile (from 'Makefile', line 28)
+FS_START = 0x300000
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PLATFORMIO_IDE = 2.5.2
+# environment
+HOME = /home/Admin
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# makefile (from 'Makefile', line 29)
+FS_SZ = $(shell echo $$(($(FS_END) - $(FS_START))))
+# makefile (from 'Makefile', line 116)
+BIN_DIR := build/bin/
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = /c/Users/Admin/AppData/Local/Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\1fa9692ca970862365dc969f915639a2-1.70.2-main-sock
+# environment
+TERM = xterm-256color
+ 
+# makefile (from 'Makefile', line 37)
+SERIAL_BAUD := 76800
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# makefile (from 'Makefile', line 19)
+LD := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-gcc
+# environment
+SESSIONNAME = Console
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+PROCESSOR_REVISION = 9702
+# makefile (from 'Makefile', line 18)
+CC := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-gcc
+# makefile (from 'Makefile', line 23)
+ADDR2LINE := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-addr2line
+# makefile (from 'Makefile', line 21)
+OBJCOPY := C:/msys32/opt/xtensa-lx106-elf/bin/xtensa-lx106-elf-objcopy
+# makefile (from 'Makefile', line 5)
+APP_NAME := sample_project
+# makefile (from 'Makefile', line 8)
+APP_ADDR := 0x12000
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+# variable set hash-table stats:
+# Load=135/1024=13%, Rehash=0, Collisions=109/333=33%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 1177227544, inode 7881299347914531): 18 files, no impossibilities.
+# source (device 1177227544, inode 2251799813700186): 13 files, no impossibilities so far.
+
+# 31 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+%.o: %.c
+#  recipe to execute (from 'Makefile', line 199):
+	@mkdir -p $(OBJS_DIR)
+	$(CC) $(CCFLAGS) $(addprefix -D,$(DEFINE)) $(addprefix -I,$(INC)) -o $(OBJS_DIR)$(notdir $@) -c $<
+
+# 1 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_spi.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+uploadfs:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 227):
+	@python $(ESPTOOL) -p $(FLASH_PORT) \
+	--baud $(FLASH_BAUD) \
+	write_flash $(FLASHDEF) \
+	$(FS_START) $(BIN_DIR)data.bin
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_i2s.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_slc.o:
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/spiffs/spiffs/src/spiffs_gc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/misc/color.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/rf_init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-20 16:11:39.6879392
+#  File has been updated.
+#  Successfully updated.
+
+unbrick:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 216):
+	@python $(ESPTOOL) -p $(FLASH_PORT) \
+	--baud $(FLASH_BAUD) \
+	write_flash $(FLASHDEF) \
+	0x000000 $(SDK_BASE)bin/boot_v1.7.bin \
+	0x3FB000 $(SDK_BASE)bin/blank.bin \
+	0x3FC000 $(SDK_BASE)bin/esp_init_data_default_v08.bin \
+	0x3FD000 $(SDK_BASE)bin/blank.bin \
+	0x3FE000 $(SDK_BASE)bin/blank.bin \
+	0x07E000 $(SDK_BASE)bin/blank.bin
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_gpio.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/rboot/appcode/rboot-api.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-25 17:48:31.7662375
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+source/ucs1903/ucs1903.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/rboot/rboot.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+flash:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 208):
+	@python $(ESPTOOL) --chip esp8266 --port $(FLASH_PORT) --baud $(FLASH_BAUD) --before default_reset --after hard_reset \
+	write_flash $(FLASHDEF) \
+	0x00000 source\rboot\firmware\rboot.bin \
+	$(APP_BOOT_ADDR) $(BIN_DIR)$(APP_NAME)$(APP_BOOT_ADDR).bin \
+	$(APP_ADDR) $(BIN_DIR)$(APP_NAME)$(APP_ADDR).bin
+	
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 204):
+	rm -rf build
+
+source/rf_init.o: source/rf_init.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'source/rf_init'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := source/rf_init.o
+# automatic
+# * := source/rf_init
+# automatic
+# < := source/rf_init.c
+# automatic
+ 
+# + := source/rf_init.c
+# automatic
+# % := 
+# automatic
+# ^ := source/rf_init.c
+# automatic
+# ? := source/rf_init.c
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=5/19=26%
+#  recipe to execute (from 'Makefile', line 199):
+	@mkdir -p $(OBJS_DIR)
+	$(CC) $(CCFLAGS) $(addprefix -D,$(DEFINE)) $(addprefix -I,$(INC)) -o $(OBJS_DIR)$(notdir $@) -c $<
+
+# Not a target:
+source/spiffs/spiffs/src/spiffs_hydrogen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/spiffs/spiffs/src/spiffs_nucleus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/components/audio/audio_output_i2s_noDAC.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+sample_project.bin: sample_project.out
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+#  recipe to execute (from 'Makefile', line 170):
+	@echo ""
+	@mkdir -p $(BIN_DIR)
+	@rm -f -r $(BIN_DIR)eagle.S $(BIN_DIR)eagle.dump
+	$(OBJDUMP) -x -s $(OUT_DIR)$< > $(BIN_DIR)eagle.dump
+	$(OBJDUMP) -S $(OUT_DIR)$< > $(BIN_DIR)eagle.S
+	@echo ""
+	$(OBJCOPY) --only-section .text -O binary $(OUT_DIR)$< eagle.app.v6.text.bin
+	$(OBJCOPY) --only-section .data -O binary $(OUT_DIR)$< eagle.app.v6.data.bin
+	$(OBJCOPY) --only-section .rodata -O binary $(OUT_DIR)$< eagle.app.v6.rodata.bin
+ 
+	$(OBJCOPY) --only-section .irom0.text -O binary $(OUT_DIR)$< eagle.app.v6.irom0text.bin
+	@echo ""
+	@python $(GENAPPTOOL) $(OUT_DIR)$< 0 0 15 6 0
+	@mv eagle.app.* $(BIN_DIR)
+	@mv $(BIN_DIR)eagle.app.flash.bin $(BIN_DIR)$(APP_NAME)$(APP_BOOT_ADDR).bin
+	@mv $(BIN_DIR)eagle.app.v6.irom0text.bin $(BIN_DIR)$(APP_NAME)$(APP_ADDR).bin
+	@echo "Generate $(APP_NAME)*.bin successully in folder $(BIN_DIR)."
+	@echo "$(BIN_DIR)$(APP_NAME)$(APP_BOOT_ADDR).bin ------------> $(APP_BOOT_ADDR)"
+	@echo "$(BIN_DIR)$(APP_NAME)$(APP_ADDR).bin ------------> $(APP_ADDR)"
+	
+
+# Not a target:
+source/http_parser/http_parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/misc/bits_math.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/http_server/http_server.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/misc/bits_string.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+sample_project.out: libuser.a
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+#  recipe to execute (from 'Makefile', line 190):
+	$(LD) $(SDK_LIBS) $(OUT_DIR)$< -Wl,--end-group -o $(OUT_DIR)$@
+
+all: sample_project.bin
+ 
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+
+buildfs:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 233):
+	$(BUILDFSTOOL) --create $(FS_SOURCE) --page $(FS_PAGE_SZ) --block $(FS_BLOCK_SZ) --size $(FS_SZ) -- $(BIN_DIR)data.bin
+	
+
+# Not a target:
+source/rboot/appcode/rboot-bigflash.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/ezform/ezform.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/firework/firework.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/spiffs/spiffs/src/spiffs_cache.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/libs/dns_server/dns_server.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/libs/src/i2s.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/spiffs/spiffs/src/spiffs_check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/libs/i2s_dma/i2s_dma.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_iomux.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+mcu_xlibs/components/audio/audio_generator_wav.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+libuser.a: source/rf_init.o source/main.o mcu_xlibs/misc/bits_string.o mcu_xlibs/misc/bits_math.o mcu_xlibs/misc/color.o mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_gpio.o mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_iomux.o mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_i2s.o mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_slc.o mcu_xlibs/arch/tensilica/l106/esp8266/driver/esp8266_spi.o mcu_xlibs/arch/tensilica/l106/esp8266/libs/i2s_dma/i2s_dma.o mcu_xlibs/arch/tensilica/l106/esp8266/libs/dns_server/dns_server.o source/libs/src/i2s.o source/http_parser/http_parser.o source/http_server/http_server.o source/ucs1903/ucs1903.o source/strip_led/meteor.o source/firework/firework.o mcu_xlibs/components/audio/audio_generator_wav.o mcu_xlibs/components/audio/audio_output_i2s_noDAC.o source/spiffs/fs.o source/spiffs/spiffs/src/spiffs_cache.o source/spiffs/spiffs/src/spiffs_check.o source/spiffs/spiffs/src/spiffs_gc.o source/spiffs/spiffs/src/spiffs_hydrogen.o source/spiffs/spiffs/src/spiffs_nucleus.o source/ezform/ezform.o source/rboot/rboot.o source/rboot/appcode/rboot-api.o source/rboot/appcode/rboot-bigflash.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+#  recipe to execute (from 'Makefile', line 194):
+	@mkdir -p $(OUT_DIR)
+	$(AR) ru $(OUT_DIR)$@ $(OBJS)
+
+monitor:
+#  Phony target (prerequisite of .PHONY).
+ 
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 237):
+	python $(MONITORTOOL) --port $(FLASH_PORT) --baud $(SERIAL_BAUD) --eol CRLF $(OUT_DIR)$(APP_NAME).out
+
+# Not a target:
+source/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all clean flash unbrick monitor
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/strip_led/meteor.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/spiffs/fs.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=45/1024=4%, Rehash=0, Collisions=0/100=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 77 / storage = 1561 B / avg = 20 B
+# current buf: size = 8162 B / used = 1561 B / count = 77 / avg = 20 B
+
+# strcache performance: lookups = 105 / hit rate = 26%
+# hash-table stats:
+ 
+# Load=77/8192=1%, Rehash=0, Collisions=1/105=1%
+# Finished Make data base on Sat Aug 27 09:05:28 2022
+
+ 

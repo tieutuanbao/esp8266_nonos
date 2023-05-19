@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solantech: ESP Firework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="bg">
+        <img src="bg.jpg" alt="solantech bg">
+    </div> -->
+    <canvas id="canvas"></canvas>
+    <div class="logo">
+        <img src="logo.png" alt="solantech logo">
+    </div>
+    <div class="full-form">
+        <div class="full-title">
+            <span class="title">CẤU HÌNH MẠCH PHÁO HOA</span>
+            <span class="sub">ST Firework Wifi</span>
+        </div>
+        <div class="form">
+            <div id="param">
+                <label for="led_t">Loại LED:</label>
+                <select id="led_t" name="led_t" onchange="onValue()">
+                </select>
+            </div>
+            <div id="param">
+                <label for="ncot">Số LED cột (1 - <span id="lb_ncot">XXX</span>):</label>
+                <input id="ncot" name="ncot" value="" type="number" onchange="onValue()">
+            </div>
+            <div id="param">
+                <label for="ntia">Số LED tia (1 - <span id="lb_ntia">XXX</span>):</label>
+                <input id="ntia" name="ntia" value="" type="number" onchange="onValue()">
+            </div>
+            <div id="param">
+                <label for="scot">Tốc độ cột (1 - <span id="lb_scot">XXX</span>):</label>
+                <input id="scot" name="scot" value="" type="number" onchange="onValue()">
+            </div>
+            <div id="param">
+                <label for="stia">Tốc độ tia (1 - <span id="lb_stia">XXX</span>):</label>
+                <input id="stia" name="stia" value="" type="number" onchange="onValue()">
+            </div>
+            <div class="button">
+                <!-- Nút nhấn -->
+                <input type="button" value="Làm mới" onclick="refresh_param();"/>
+                <input type="button" value="Lưu" onclick="save_param();">
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="/" style="color: black;"><img src = "power.svg"/><span>Điều khiển</span></a>
+        <a href="/setup" style="background-color: rgb(206 183 255); color: white;"><img src = "setup.svg"/><span>Cài đặt</span></a>
+        <a href="/alarm" style="color: black;"><img src = "alarm.svg"/><span>Hẹn giờ</span></a>
+        <a href="/wifi" style="color: black;"><img src = "wifi.svg"/><span>Wifi</span></a>
+        <a href="/info" style="color: black;"><img src = "info.svg"/><span>Hướng dẫn</span></a>
+    </div>
+</body>
+<script src="firework_bg.js" defer></script>
+<script defer>
+    var cur_ncot = 0;
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api?id=param", true);
+    xhttp.send();
+    function onValue() {
+        var obj = new Object();
+        obj.api_type = "param";
+        obj.type = document.getElementById("led_t").selectedIndex;
+        obj.ncot = document.getElementById("ncot").valueAsNumber;
+        obj.ntia = document.getElementById("ntia").valueAsNumber;
+        obj.scot = document.getElementById("scot").valueAsNumber;
+        obj.stia = document.getElementById("stia").valueAsNumber;
+        var jsonString= JSON.stringify(obj);
+        xhttp.open("POST", "/api", true);
+        xhttp.send(jsonString);
+    }
+    function refresh_param() {
+        xhttp.open("GET", "/api?id=param", true);
+        xhttp.send();
+    }
+    function save_param() {
+        xhttp.open("POST", "/api", true);
+        xhttp.send("save_param");
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+        {
+            try {
+                if(this.responseText == "SAVE_OK") {
+                    alert("Lưu thành công!");
+                }
+                else {
+                    /* Lấy dữ liệu Json */
+                    const obj = JSON.parse(this.responseText);
+                    /* Refresh danh sách LED */
+                    var led_list = document.getElementById("led_t");
+                    if(led_list.childElementCount > 0) {
+                        for (let idxLED = led_list.childElementCount; idxLED > 0; idxLED--) {
+                            led_list.remove(led_list.selectedIndex);
+                        }
+                    }
+                    obj.led_t.forEach(led => {
+                        var ledOpt = document.createElement("option");
+                        const textnode = document.createTextNode(led);
+                        ledOpt.appendChild(textnode);
+                        if(obj.led_select == led) {
+                            ledOpt.setAttribute("selected", "");
+                        }
+                        document.getElementById("led_t").appendChild(ledOpt);
+                    });
+                    document.getElementById("lb_ncot").innerHTML = obj.maxncot;
+                    document.getElementById("lb_ntia").innerHTML = obj.maxntia;
+                    document.getElementById("lb_scot").innerHTML = obj.maxscot;
+                    document.getElementById("lb_stia").innerHTML = obj.maxstia;
+                    document.getElementById("ncot").value = obj.ncot;
+                    document.getElementById("ntia").value = obj.ntia;
+                    document.getElementById("scot").value = obj.scot;
+                    document.getElementById("stia").value = obj.stia;
+                }
+            }
+            catch (e) {
+                return false;
+            }
+        }
+    };    
+</script>
+</html>

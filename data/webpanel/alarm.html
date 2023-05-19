@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solantech: ESP Firework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="bg">
+        <img src="bg.jpg" alt="solantech bg">
+    </div> -->
+    <canvas id="canvas"></canvas>
+    <div class="logo">
+        <img src="logo.png" alt="solantech logo">
+    </div>
+    <div class="full-form">
+        <div class="full-title">
+            <span class="title">CẤU HÌNH MẠCH PHÁO HOA</span>
+            <span class="sub">ST Firework Wifi</span>
+        </div>
+        <div class="form">
+            <div id="param">
+                <label for="time-cur">Bây giờ:</label>
+                <input type="text" id="time-cur" name="time-cur" style="width: 40%; text-align: center;" readonly/>
+            </div>
+            <div id="param">
+                <label for="time-on">Bật lúc:</label>
+                <div style="display: flex; width: 40%; justify-content: space-between;">
+                    <select name="thon" id="thon" style="width: 40%; height: 30px; background-color: rgb(206 183 255); border-radius: 5px; border: none;">
+                    </select>
+                    <span style="margin-top: auto; margin-bottom: auto; font-weight: bold;">:</span>
+                    <select name="tmon" id="tmon" style="width: 40%; height: 30px; background-color: rgb(206 183 255); border-radius: 5px; border: none;">
+                    </select>
+                </div>
+            </div>
+            <div id="param">
+                <label for="time-off">Tắt lúc:</label>
+                <div style="display: flex; width: 40%; justify-content: space-between;">
+                    <select name="thoff" id="thoff" style="width: 40%; height: 30px; background-color: rgb(206 183 255); border-radius: 5px; border: none;">
+                    </select>
+                    <span style="margin-top: auto; margin-bottom: auto; font-weight: bold;">:</span>
+                    <select name="tmoff" id="tmoff" style="width: 40%; height: 30px; background-color: rgb(206 183 255); border-radius: 5px; border: none;">
+                    </select>
+                </div>
+            </div>
+            <div id="param">
+                <label for="event">Sự kiện:</label>
+                <select id="event" name="event" style="width: 40%;">
+                    <option id="event-0" value="0">Không có</option>
+                    <option id="event-1" value="1">Âm thanh</option>
+                    <option id="event-2" value="2">Hiệu ứng</option>
+                    <option id="event-3" value="3">Âm thanh + Hiệu ứng</option>
+                </select>
+            </div>
+            <div class="button">
+                <!-- Nút nhấn -->
+                <input type="button" value="Làm mới" onclick="refresh_param();"/>
+                <input type="button" value="Lưu" onclick="save_param();">
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="/" style="color: black;"><img src = "power.svg"/><span>Điều khiển</span></a>
+        <a href="/setup" style="color: black;"><img src = "setup.svg"/><span>Cài đặt</span></a>
+        <a href="/alarm" style="background-color: rgb(206 183 255); color: white;"><img src = "alarm.svg"/><span>Hẹn giờ</span></a>
+        <a href="/wifi" style="color: black;"><img src = "wifi.svg"/><span>Wifi</span></a>
+        <a href="/info" style="color: black;"><img src = "info.svg"/><span>Hướng dẫn</span></a>
+    </div>
+</body>
+<script src="firework_bg.js" defer></script>
+<script defer>
+    var cur_ncot = 0;
+    const xhttp = new XMLHttpRequest();
+    setInterval(function () {
+        xhttp.open("GET", "/api?id=time_cur", true);
+        xhttp.send();
+    }, 3000);
+    for (let index = 0; index < 24; index++) {
+        var value = document.createElement("option");
+        value.appendChild(document.createTextNode(index.toString()));
+        document.getElementById("thon").appendChild(value);
+    }
+    for (let index = 0; index < 60; index++) {
+        var value = document.createElement("option");
+        value.appendChild(document.createTextNode(index.toString()));
+        document.getElementById("tmon").appendChild(value);
+    }
+    for (let index = 0; index < 24; index++) {
+        var value = document.createElement("option");
+        value.appendChild(document.createTextNode(index.toString()));
+        document.getElementById("thoff").appendChild(value);
+    }
+    for (let index = 0; index < 60; index++) {
+        var value = document.createElement("option");
+        value.appendChild(document.createTextNode(index.toString()));
+        document.getElementById("tmoff").appendChild(value);
+    }
+    function refresh_param() {
+        xhttp.open("GET", "/api?id=time_set", true);
+        xhttp.send();
+    }
+    function save_param() {
+        var obj = new Object();
+        obj.api_type = "alarm";
+        obj.thon = document.getElementById("thon").selectedIndex;
+        obj.tmon = document.getElementById("tmon").selectedIndex;
+        obj.thoff = document.getElementById("thoff").selectedIndex;
+        obj.tmoff = document.getElementById("tmoff").selectedIndex;
+        obj.event = document.getElementById("event").selectedIndex;
+        var jsonString= JSON.stringify(obj);
+        xhttp.open("POST", "/api", true);
+        xhttp.send(jsonString);
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            try {
+                if(this.responseText == "SAVE_OK") {
+                    alert("Lưu thành công!");
+                }
+                else {
+                    /* Lấy dữ liệu Json */
+                    const obj = JSON.parse(this.responseText);
+                    if(obj.hasOwnProperty('thon') && obj.hasOwnProperty('tmon') && obj.hasOwnProperty('thoff') && obj.hasOwnProperty('tmoff') && obj.hasOwnProperty('event')) {
+                        document.getElementById("thon").selectedIndex = obj.thon;
+                        document.getElementById("tmon").selectedIndex = obj.tmon;
+                        document.getElementById("thoff").selectedIndex = obj.thoff;
+                        document.getElementById("tmoff").selectedIndex = obj.tmoff;
+                        document.getElementById("event").selectedIndex = obj.event;
+                    }
+                    else if(obj.hasOwnProperty('timecur')) {
+                        document.getElementById("time-cur").value = obj.timecur;
+                    }
+                }
+            }
+            catch (e) {
+                return false;
+            }
+        }
+    };    
+</script>
+</html>

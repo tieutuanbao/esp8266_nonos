@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solantech: ESP Firework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="bg">
+        <img src="bg.jpg" alt="solantech bg">
+    </div> -->
+    <canvas id="canvas"></canvas>
+    <div class="logo">
+        <img src="logo.png" alt="solantech logo">
+    </div>
+    <div class="full-form">
+        <div class="full-title">
+            <span class="title">CẤU HÌNH MẠCH PHÁO HOA</span>
+            <span class="sub">ST Firework Wifi</span>
+        </div>
+        <div class="form">
+            <div id="param">
+                <label for="ssid">Chọn wifi: </label>
+                <select id="ssid" name="ssid" style="width: 60%;">
+                </select>
+            </div>
+            <div id="param">
+                <label for="ssid">Password: </label>
+                <input id="pass" name="password" type="text" placeholder="Nhập mật khẩu wifi ..." value="" style="width: 60%;">
+            </div>
+            <div class="button">
+                <!-- Nút nhấn -->
+                <input type="button" value="Làm mới" onclick="refresh_param();"/>
+                <input type="button" value="Lưu" onclick="save_param();">
+            </div>
+        </div>
+        <div class="wifi-info">
+            <div><div id="label">Trạng thái:</div><div id="status">Không có kết nối</div></div>
+            <div><div id="label">IP:</div><a href="" id="ip"></a></div>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="/" style="color: black;"><img src = "power.svg"/><span>Điều khiển</span></a>
+        <a href="/setup" style="color: black;"><img src = "setup.svg"/><span>Cài đặt</span></a>
+        <a href="/alarm" style="color: black;"><img src = "alarm.svg"/><span>Hẹn giờ</span></a>
+        <a href="/wifi" style="background-color: rgb(206 183 255); color: white;"><img src = "wifi.svg"/><span>Wifi</span></a>
+        <a href="/info" style="color: black;"><img src = "info.svg"/><span>Hướng dẫn</span></a>
+    </div>
+</body>
+<script src="firework_bg.js" defer></script>
+<script defer>
+    var cur_ncot = 0;
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api?id=wifi", true);
+    xhttp.send();
+    setInterval(function () {
+        xhttp.open("GET", "/api?id=wifi_stt", true);
+        xhttp.send();
+    }, 3000);
+    function refresh_param() {
+        xhttp.open("GET", "/api?id=wifi", true);
+        xhttp.send();
+    }
+    function save_param() {
+        var obj = new Object();
+        obj.api_type = "wifi";
+        elm_id = document.getElementById("ssid");
+        obj.ssid = elm_id.options[elm_id.selectedIndex].text;
+        if(document.getElementById("pass").value == null) {
+            obj.pass = "";
+        }
+        else {
+            obj.pass = document.getElementById("pass").value;
+        }
+        var jsonString= JSON.stringify(obj);
+        xhttp.open("POST", "/api", true);
+        xhttp.send(jsonString);
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            try {
+                if(this.responseText == "SAVE_OK") {
+                    alert("Lưu thành công!");
+                }
+                else {
+                    /* Lấy dữ liệu Json */
+                    const obj = JSON.parse(this.responseText);
+                    if(obj.hasOwnProperty('wifiap') && obj.hasOwnProperty('ap_select')) {
+                        var wifiap_list = document.getElementById("ssid");
+                        /* Xóa danh sách AP cũ */
+                        if(wifiap_list.childElementCount > 0) {
+                            for (let indexAP = wifiap_list.childElementCount; indexAP > 0; indexAP--) {
+                                wifiap_list.remove(wifiap_list.selectedIndex);
+                            }
+                        }
+                        /* Lấy danh sách AP mới */
+                        obj.wifiap.forEach(wifiap => {
+                            var ssidOpt = document.createElement("option");
+                            const textnode = document.createTextNode(wifiap);
+                            ssidOpt.appendChild(textnode);
+                            if(obj.ap_select != null) {
+                                if(obj.ap_select == wifiap) {
+                                    ssidOpt.setAttribute("selected", "");
+                                }
+                            }
+                            document.getElementById("ssid").appendChild(ssidOpt);
+                        });
+                    }
+                    if(obj.hasOwnProperty('pass')) {
+                        /* Lấy Pass wifi đang dùng */
+                        if(obj.pass != null) {
+                            document.getElementById("pass").value = obj.pass;
+                        }
+                        else {
+                            document.getElementById("pass").value = "";
+                        }
+                    }
+                    if(obj.hasOwnProperty('ip')) {
+                        /* Lấy IP */
+                        if(obj.ip != "") {
+                            document.getElementById("ip").innerHTML = obj.ip;
+                            document.getElementById("ip").setAttribute("href", "http://" + obj.ip);
+                            document.getElementById("status").innerHTML = "Đã kết nối";
+                        }
+                        else {
+                            document.getElementById("ip").innerHTML = "";
+                            document.getElementById("ip").setAttribute("href", "");
+                            document.getElementById("status").innerHTML = "Chưa có kết nối";
+                        }
+                    }
+                }
+            }
+            catch (e) {
+                return false;
+            }
+        }
+    };
+</script>
+</html>

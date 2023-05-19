@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/",
+                "${workspaceFolder}/ESP8266_NONOS_SDK\\include",
+                "${workspaceFolder}/mcu_xlibs/misc",
+                "${workspaceFolder}/source",
+                "${workspaceFolder}/source/libs/inc",
+                "${workspaceFolder}/source/ezform",
+                "${workspaceFolder}/source/firework",
+                "${workspaceFolder}/source/http_parser",
+                "${workspaceFolder}/source/http_server",
+                "${workspaceFolder}/source/spiffs",
+                "${workspaceFolder}/source/spiffs/spiffs/src",
+                "${workspaceFolder}/source/strip_led",
+                "${workspaceFolder}/source/ucs1903",
+                "${workspaceFolder}/ESP8266_NONOS_SDK\\third_party\\include",
+                "${workspaceFolder}/ESP8266_NONOS_SDK\\third_party\\include/lwip",
+                "${workspaceFolder}/mcu_xlibs/arch/tensilica/l106/esp8266/include/driver",
+                "${workspaceFolder}/mcu_xlibs/arch/tensilica/l106/esp8266/libs/dns_server",
+                "${workspaceFolder}/source",
+                "${workspaceFolder}/mcu_xlibs/components/audio",
+                "${workspaceFolder}/mcu_xlibs/arch/tensilica/l106/esp8266/libs/i2s_dma",
+                "${workspaceFolder}/ESP8266_NONOS_SDK/driver_lib/include/driver",
+                "${workspaceFolder}/mcu_xlibs/components/sha1",
+                "${workspaceFolder}/source/websocket_parser",
+                "${workspaceFolder}/source/jsmn",
+                "${workspaceFolder}/source/lpd6803",
+                "${workspaceFolder}/source/realtime",
+                "${workspaceFolder}/source/bboot/build",
+                "${workspaceFolder}/source/bboot/source",
+                "${workspaceFolder}/source/web_binary"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "ICACHE_FLASH",
+                "SPI_FLASH_SIZE_MAP=4"
+            ],
+            "compilerPath": "C:\\msys32\\usr\\bin\\gcc.exe",
+            "cStandard": "c99",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

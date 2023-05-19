@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solantech: ESP Firework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="bg">
+        <img src="bg.jpg" alt="solantech bg">
+    </div> -->
+    <canvas id="canvas"></canvas>
+    <div class="logo">
+        <img src="logo.png" alt="solantech logo">
+    </div>
+    <div class="full-form">
+        <div style="height: 20px;"></div>
+        <div style="width: 50%; position: relative; height: 24%; max-height: 400px; max-width: 400px; margin-top: 30px; margin-bottom: 30px;  padding-top: 5px; padding-bottom: 5px; background-color: rgb(229, 216, 255); border-radius: 20px;" onclick="ctrlEffect();">
+            <img id="close-effect" src = "close.svg" style="display: none; margin: 0; width: 100%; height: 80%; position: absolute; float: inline-start;"/>
+            <img style="display: block; position: relative; margin: 0; width: 100%; height: 80%;"src = "firework.svg"/>
+            <div style="display: flex; width: 100%; height: 18%;"><span style="margin: auto; text-align: center; font-weight: bold; font-size: 24px;">Hiệu ứng</span></div>
+        </div>
+        <div style="width: 50%; position: relative; height: 24%; max-height: 400px; max-width: 400px; margin-top: 30px; padding-top: 5px; padding-bottom: 5px; background-color: rgb(229, 216, 255); border-radius: 20px;" onclick="ctrlSound();">
+            <img id="close-sound" src = "close.svg" style="display: none; margin: 0; width: 100%; height: 80%; position: absolute; float: inline-start;"/>
+            <img style="display: block; position: relative; width: 100%; height: 80%;"src = "sound.svg"/>
+            <div style="display: flex; width: 100%; height: 20%;"><span style="margin: auto; text-align: center; font-weight: bold; font-size: 24px;">Âm thanh</span></div>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="/" style="background-color: rgb(206 183 255); color: white;"><img src = "power.svg"/><span>Điều khiển</span></a>
+        <a href="/setup" style="color: black;"><img src = "setup.svg"/><span>Cài đặt</span></a>
+        <a href="/alarm" style="color: black;"><img src = "alarm.svg"/><span>Hẹn giờ</span></a>
+        <a href="/wifi" style="color: black;"><img src = "wifi.svg"/><span>Wifi</span></a>
+        <a href="/info" style="color: black;"><img src = "info.svg"/><span>Hướng dẫn</span></a>
+    </div>
+</body>
+<script src="firework_bg.js" defer></script>
+<script defer>
+    var cur_ncot = 0;
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api?id=fwork_stt", true);
+    xhttp.send();
+
+    function ctrlEffect() {
+        var obj = new Object();
+        obj.api_type = "cled";
+        if(document.getElementById("close-effect").style.display == "none") {
+            obj.stt = 0;
+        }
+        else {
+            obj.stt = 1;
+        }
+        var jsonString= JSON.stringify(obj);
+        xhttp.open("POST", "/api", true);
+        xhttp.send(jsonString);
+    }
+    function ctrlSound() {
+        var obj = new Object();
+        obj.api_type = "csound";
+        if(document.getElementById("close-sound").style.display == "none") {
+            obj.stt = 0;
+        }
+        else {
+            obj.stt = 1;
+        }
+        var jsonString= JSON.stringify(obj);
+        xhttp.open("POST", "/api", true);
+        xhttp.send(jsonString);
+    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+        {
+            try {
+                /* Lấy dữ liệu Json */
+                const obj = JSON.parse(this.responseText);
+                /* Refresh danh sách LED */
+                if(obj.hasOwnProperty("eff")) {
+                    if(obj.eff == 0) {
+                        document.getElementById("close-effect").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("close-effect").style.display = "none";
+                    }
+                }
+                if(obj.hasOwnProperty("sound")) {
+                    if(obj.sound == 0) {
+                        document.getElementById("close-sound").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("close-sound").style.display = "none";
+                    }
+                }
+            }
+            catch (e) {
+                return false;
+            }
+        }
+    };    
+</script>
+</html>

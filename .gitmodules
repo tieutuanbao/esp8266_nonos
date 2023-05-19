@@ -1,0 +1,6 @@
+[submodule "ESP8266_NONOS_SDK"]
+	path = ESP8266_NONOS_SDK
+	url = https://github.com/espressif/ESP8266_NONOS_SDK.git
+[submodule "mcu_xlibs"]
+	path = mcu_xlibs
+	url = https://github.com/tieutuanbao/mcu_xlibs.git
